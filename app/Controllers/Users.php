@@ -4,6 +4,10 @@ namespace App\Controllers;
 
 use CodeIgniter\Controller;
 
-class Main extends BaseController
+class Users extends BaseController
 {
+    public function index()
+    {
+        echo "Estou aqui!!";
+    }
 }
