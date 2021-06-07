@@ -10,6 +10,7 @@ class Users extends BaseController
     // ===============================================================
     public function __construct()
     {
+
         $this->session = session();
     }
 
@@ -28,8 +29,29 @@ class Users extends BaseController
     // ===============================================================
     public function login()
     {
+        $error = '';
+        $data = array();
+        $request = \Config\Services::request();
+
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+            // Check fields
+            $username = $request->getPost('text_username');
+            $password = $request->getPost('text_password');
+
+            if ($username == '' || $password == '') {
+                $error = "Erro no preenchimento dos campos!";
+            }
+
+            // Check databse
+        }
+
+        if ($error != '') {
+            $data['error'] = $error;
+        }
+
         // Show if login page
-        echo view('users/login');
+        echo view('users/login', $data);
     }
 
     // ===============================================================
